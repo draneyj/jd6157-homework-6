@@ -12,7 +12,10 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(eigen)
 
 if(DEFINED SKBUILD)
-  # ... Fill me in!
+  find_package(pybind11)
+  file(GLOB OUTPUT src/*.cpp)
+  pybind11_add_module(HarmonicOscillator ${OUTPUT})
+  install(TARGETS HarmonicOscillator DESTINATION ${SKBUILD_PLATLIB_DIR})
 else()
   add_executable(main src/main.cpp src/integrator.hpp)
   target_include_directories(main PRIVATE src "${eigen_SOURCE_DIR}")
