@@ -13,7 +13,7 @@ FetchContent_MakeAvailable(eigen)
 
 if(DEFINED SKBUILD)
   find_package(pybind11)
-  file(GLOB OUTPUT src/*pp)
+  file(GLOB OUTPUT src/*.cpp)
   pybind11_add_module(se-for-sci-hw6 MODULE ${OUTPUT})
   target_include_directories(se-for-sci-hw6 PRIVATE src "${eigen_SOURCE_DIR}")
   install(TARGETS se-for-sci-hw6 DESTINATION ${SKBUILD_PLATLIB_DIR})
